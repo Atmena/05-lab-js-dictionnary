@@ -2,6 +2,8 @@
     font-family: 'Cardo', serif;
     background-image: url(media/background-white.png);
     --main-white: #131313;
+    --main-black: #e1e1e1;
+    --select: #db0000;
 }
 
 body {
@@ -20,9 +22,59 @@ h1 {
 }
 
 #right-menu {
-    display: flex;
-    justify-content: flex-end;
+    float: right;
     margin: 0;
+    transition: 0.4s;
+  }
+
+#hidden-menu {
+    transform: translateX(100%);
+    transition: 0.4s;
+    background-image: url(media/hidden-menu.png);
+    background-repeat: no-repeat;
+    margin-top: -4.625rem;
+    width: 3.125rem;
+}
+
+.show {
+    transform: translateX(0%);
+}
+
+
+#menu-right {
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+#hidden-menu > p {
+    margin: 0;
+    font-size: 1.25rem;
+    height: 2.5rem;
+    text-align: center;
+    font-size: 20px;
+}
+
+#serif {
+    padding-top: 1.4375rem;
+    font-family: 'Cardo';
+    color: var(--select);
+    cursor: pointer;
+}
+
+#sans-serif {
+    font-family: 'Fira Sans';
+    color: var(--main-white);
+    cursor: pointer;
+}
+
+#monospace {
+    font-family: 'Inconsolata';
+    color: var(--main-white);
+    cursor: pointer;
+}
+
+#color-selector {
+    padding: 0 0 1.4375rem .375rem;
     cursor: pointer;
 }
 
