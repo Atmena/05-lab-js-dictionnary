@@ -21,6 +21,7 @@ function showMenu() {
 }
 
 function hideMenu() {
+  hiddenMenu.toggleAttribute("hidden");
   hiddenMenu.classList.remove("show");
   rightMenu.style.transform = "translateX(0)";
   menuVisible = false;
