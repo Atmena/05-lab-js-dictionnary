@@ -12,28 +12,32 @@
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-    <header>
-        <img id="headerimg" src="src/media/logo-blanc.png" width="75" height="75" alt="Open book">
-        <h1>Webctionnary</h1>
-    </header>
-    <div id="right-menu">
-        <img id="menu-right" src="src/media/preference-white.png" width="50" height="50" alt="Roue dentée">
-        <div id="hidden-menu" hidden>
-            <p id="serif">Aa</p>
-            <p id="sans-serif">Aa</p>
-            <p id="monospace">Aa</p>
-            <img id="color-selector" src="src/media/color-white.svg" alt="Logo de luminosité" width="40" height="40">
+    <div id="flexbox">
+        <div id="box">
+            <div id="header">
+                <img id="headerimg" src="src/media/logo-blanc.png" width="75" height="75" alt="Open book">
+                <h1>Webctionnary</h1>
+            </div>
+            <div id="right-menu">
+                <img id="menu-right" src="src/media/preference-white.png" width="50" height="50" alt="Roue dentée">
+                <div id="hidden-menu" hidden>
+                    <p id="serif">Aa</p>
+                    <p id="sans-serif">Aa</p>
+                    <p id="monospace">Aa</p>
+                    <img id="color-selector" src="src/media/color-white.svg" alt="Logo de luminosité" width="40" height="40">
+                </div>
+            </div>    
+            <div id="content">
+                <div id="search">
+                    <input id="text-input" type="text" placeholder="Input Word">
+                    <input id="but-input" type="button">
+                </div>
+            </div>
+            <div id="description">
+                <h2 id="word">Word <img id="prononciation" src="src/media/sound-logo-white.svg" alt="Logo de son" width="20" height="20"></h2>
+                <p id="definition">Your definition here.</p>
+            </div>
         </div>
-    </div>    
-    <div id="content">
-        <div id="search">
-            <input id="text-input" type="text" placeholder="Input Word">
-            <input id="but-input" type="button">
-        </div>
-    </div>
-    <div id="description">
-        <h2 id="word">Word <img id="prononciation" src="src/media/sound-logo-white.svg" alt="Logo de son" width="20" height="20"></h2>
-        <p id="definition">Your definition here.</p>
     </div>
     <audio id="audio"></audio>
 </body>
