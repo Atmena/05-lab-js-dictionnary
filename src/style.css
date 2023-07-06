@@ -22,6 +22,7 @@ body {
 #box {
     background-image: url(media/background-white.png);
     background-size: cover;
+    width: 800px;
 }
 
 #header {
@@ -51,6 +52,7 @@ h1 {
     transform: translateX(100%);
     transition: 0.4s;
     background-image: url(media/hidden-menu.png);
+    background-repeat: no-repeat;
     margin-top: -4.625rem;
     width: 3.125rem;
 }
@@ -58,7 +60,6 @@ h1 {
 .show {
     transform: translateX(0%);
 }
-
 
 #menu-right {
     cursor: pointer;
@@ -143,6 +144,7 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 h2 {
@@ -158,14 +160,18 @@ h2 {
 
 #definition {
     font-size: 1.25rem;
+    white-space: normal;
+}
+
+#syn-word {
     padding-bottom: 12.8125rem;
-    width: 48.5rem;
 }
 
 @media screen and (max-width: 23.4375rem) {
     
     #box {
         background-image: url(media/background-mobile-white.png);
+        width: 375px;
     }
     
     #header {
@@ -175,12 +181,6 @@ h2 {
     #headerimg {
         width: 2.5rem;
         height: 2.5rem;
-    }
-    
-    #hidden-menu {
-        background-image: url(media/hidden-menu.png);
-        margin-top: -4.625rem;
-        width: 3.125rem;
     }
     
     #hidden-menu > p {
