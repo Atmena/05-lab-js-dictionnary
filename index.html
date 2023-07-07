@@ -12,36 +12,38 @@
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-    <div id="box">
-        <div id="header">
-            <img id="headerimg" src="src/media/logo-blanc.png" width="75" height="75" alt="Open book">
-            <h1>Webctionnary</h1>
+    <div id="header">
+        <img id="headerimg" src="src/media/logo-blanc.png" width="75" height="75" alt="Open book">
+        <h1>Webctionnary</h1>
+    </div>
+    <div id="right-menu">
+        <img class="serif selector" src="src/media/group_1.svg">
+        <img class="sans-serif selector" src="src/media/group_2.svg">
+        <img class="monospace selector" src="src/media/group_3.svg">
+        <img class="color-selector selector" src="src/media/group_4.svg">
+        <img id="menu-right" src="src/media/preference-white.png" width="50" height="50" alt="Roue dentée" hidden>
+        <div id="hidden-menu" hidden>
+            <p class="serif selector">Aa</p>
+            <p class="sans-serif selector">Aa</p>
+            <p class="monospace selector">Aa</p>
+            <img class="color-selector selector" src="src/media/color-white.svg" alt="Logo de luminosité" width="40" height="40">
         </div>
-        <div id="right-menu">
-            <img id="menu-right" src="src/media/preference-white.png" width="50" height="50" alt="Roue dentée">
-            <div id="hidden-menu" hidden>
-                <p id="serif">Aa</p>
-                <p id="sans-serif">Aa</p>
-                <p id="monospace">Aa</p>
-                <img id="color-selector" src="src/media/color-white.svg" alt="Logo de luminosité" width="40" height="40">
-            </div>
-        </div>    
-        <div id="content">
-            <div id="search">
-                <input id="text-input" type="text" placeholder="Input Word">
-                <input id="but-input" type="button">
-            </div>
+    </div>    
+    <div id="content">
+        <div id="search">
+            <input id="text-input" type="text" placeholder="Input Word">
+            <input id="but-input" type="button">
         </div>
-        <div id="def">
-            <h2 id="word">Word <img id="prononciation" src="src/media/sound-logo-white.svg" alt="Logo de son" width="20" height="20"></h2>
-            <div id="description">
-                <h3>definition</h3>
-                <p id="definition">Your definition here.</p>
-            </div>
-            <div id="syn">
-                <h3 id="synonyme">Synonyme</h3>
-                <p id="syn-word">Your synonyme here.</p>
-            </div>
+    </div>
+    <div id="def">
+        <h2 id="word">Word <img id="prononciation" src="src/media/sound-logo-white.svg" alt="Logo de son" width="20" height="20"></h2>
+        <div id="description">
+            <h3>definition</h3>
+            <p id="definition">Your definition here.</p>
+        </div>
+        <div id="syn">
+            <h3 id="synonyme">Synonyme</h3>
+            <p id="syn-word">Your synonyme here.</p>
         </div>
     </div>
     <audio id="audio"></audio>

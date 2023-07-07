@@ -33,6 +33,8 @@ h1 {
     float: right;
     margin: 0;
     transition: 0.4s;
+    display: flex;
+    flex-direction: column;
   }
 
 #hidden-menu {
@@ -60,28 +62,32 @@ h1 {
     font-size: 1.25rem;
 }
 
-#serif {
+.serif {
     padding-top: 1.4375rem;
     font-family: 'Cardo';
     color: var(--select-white);
     cursor: pointer;
 }
 
-#sans-serif {
+.sans-serif {
     font-family: 'Fira Sans';
     color: var(--main-white);
     cursor: pointer;
 }
 
-#monospace {
+.monospace {
     font-family: 'Inconsolata';
     color: var(--main-white);
     cursor: pointer;
 }
 
-#color-selector {
-    padding: 0 0 1.4375rem .375rem;
+.color-selector {
+    padding: 0 0 1.4375rem;
     cursor: pointer;
+}
+
+.selector {
+    padding-bottom: 1.5625rem;
 }
 
 #content {
