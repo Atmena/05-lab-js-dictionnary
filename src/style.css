@@ -142,6 +142,19 @@ body.dark-mode .selector:hover {
     margin-top: 4.9375rem;
 }
 
+body.dark-mode #text-input {
+    background: #444444;
+    border: 1px solid var(--main-black);
+}
+
+#text-input::placeholder {
+    color: var(--main-white);
+}
+
+body.dark-mode #text-input::placeholder {
+    color: var(--main-black);
+}
+
 #but-input {
     border-radius: 0 1.625rem 1.625rem 0;
     border: .0625rem solid #000;
@@ -154,6 +167,11 @@ body.dark-mode .selector:hover {
     cursor: pointer;
     margin-right: 12rem;
     margin-top: 4.9375rem;
+}
+
+body.dark-mode #but-input {
+    background: #444444;
+    border: 1px solid var(--main-black);
 }
 
 #def {
