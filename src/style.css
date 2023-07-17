@@ -1,5 +1,4 @@
 :root {
-    font-family: 'Cardo', serif;
     --main-white: #131313;
     --main-black: #e1e1e1;
     --select-white: #db0000;
@@ -8,8 +7,14 @@
 
 body {
     margin: 0;
+    color: var(--main-white);
     background-color: var(--main-white);
     background-image: url(media/background-white.png);
+}
+
+body.dark-mode {
+    color: var(--main-black);
+    background-image: url(media/background-black.png);
 }
 
 #header {
@@ -63,31 +68,54 @@ h1 {
 }
 
 .serif {
-    padding-top: 1.4375rem;
-    font-family: 'Cardo';
-    color: var(--select-white);
-    cursor: pointer;
+    font-family: 'Cardo', serif;
 }
 
 .sans-serif {
-    font-family: 'Fira Sans';
-    color: var(--main-white);
-    cursor: pointer;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .monospace {
-    font-family: 'Inconsolata';
-    color: var(--main-white);
-    cursor: pointer;
+    font-family: 'Inconsolata', monospace;
 }
 
+.font-option.selected {
+    border-color: var(--select-white);
+    color: var(--select-white);
+}
+
+body.dark-mode .font-option.selected {
+    border-color: var(--select-black);
+    color: var(--select-black);
+  }
+
 .color-selector {
-    padding: 0 0 1.4375rem;
     cursor: pointer;
 }
 
 .selector {
-    padding-bottom: 1.5625rem;
+    margin-bottom: 1.5625rem;
+    margin-right: .625rem;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 1.5625rem;
+    border: #000 2px solid;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.dark-mode .selector {
+    border: var(--main-black) 2px solid;
+}
+
+.selector:hover {
+    background-color: #ffffff;
+}
+
+body.dark-mode .selector:hover {
+    background-color: #000;
 }
 
 #content {
@@ -112,10 +140,6 @@ h1 {
     padding: .6875rem 1.375rem;
     margin-left: 15.125rem;
     margin-top: 4.9375rem;
-}
-
-#text-input::placeholder {
-    color: var(--main-white);
 }
 
 #but-input {
@@ -160,6 +184,14 @@ h3 {
 #definition, #syn-word {
     font-size: 1.25rem;
     white-space: normal;
+}
+
+#description, #syn {
+    padding: 0 .625rem;
+}
+
+#syn-word {
+    text-transform: capitalize;
 }
 
 @media screen and (max-width: 23.4375rem) {
