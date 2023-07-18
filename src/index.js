@@ -23,7 +23,7 @@ function searchWord() {
         let pronunciationIcon = document.querySelector("#prononciation");
 
         if (data[0].phonetics && data[0].phonetics.length > 0 && data[0].phonetics[0].audio) {
-          wordElement.innerHTML = `${data[0].word} <img id="prononciation" src="src/media/sound-logo-white.svg" alt="Logo de son" width="20" height="20">`;
+          wordElement.innerHTML = `${data[0].word} <img id="prononciation" src="src/media/sound-logo.svg" alt="Logo de son" width="20" height="20">`;
           pronunciationIcon = document.querySelector("#prononciation");
           if (pronunciationIcon) {
             pronunciationIcon.addEventListener("click", playAudio);
