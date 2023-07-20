@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
-  let searchButton = document.querySelector("#but-input");
-  let searchInput = document.querySelector("#text-input");
-  let errorMessage = document.querySelector("#error-message");
-  let noResultMessage = document.querySelector("#no-result-message");
-  let colorSelectorButton = document.querySelector(".color-selector");
+  const searchButton = document.querySelector("#but-input");
+  const searchInput = document.querySelector("#text-input");
+  const errorMessage = document.querySelector("#error-message");
+  const noResultMessage = document.querySelector("#no-result-message");
+  const colorSelectorButton = document.querySelector(".color-selector");
+  const fontOptions = document.querySelectorAll(".font-option");
 
   searchButton.addEventListener("click", searchWord);
   searchInput.addEventListener("keydown", function(event) {
@@ -13,71 +14,72 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   colorSelectorButton.addEventListener("click", toggleDarkMode);
+
+  fontOptions.forEach(option => {
+    option.addEventListener("click", changeFont);
+  });
+
+  const siteBody = document.querySelector("body");
+  siteBody.classList.add("serif");
 });
 
 function searchWord() {
-  let wordInput = document.querySelector("#text-input");
-  let word = wordInput.value.trim();
-  let errorMessage = document.querySelector("#error-message");
-  let noResultMessage = document.querySelector("#no-result-message");
+  const wordInput = document.querySelector("#text-input");
+  const word = wordInput.value.trim();
+  const errorMessage = document.querySelector("#error-message");
+  const noResultMessage = document.querySelector("#no-result-message");
 
   if (/^[a-zA-Z]+$/.test(word)) {
     errorMessage.style.display = "none";
-    let apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
-    let synApiUrl = "https://api.datamuse.com/words?rel_syn=" + word;
+    noResultMessage.style.display = "none";
+    const apiUrl = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
+    const synApiUrl = "https://api.datamuse.com/words?rel_syn=" + word;
 
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         if (data.length > 0) {
-          let wordElement = document.querySelector("#word");
-          let pronunciationIcon = document.querySelector("#prononciation");
+          const wordElement = document.querySelector("#word");
+          const pronunciationIcon = document.querySelector("#prononciation");
+          const definitionElement = document.querySelector("#definition");
+          const audioElement = document.querySelector("#audio");
+          const synonymsElement = document.querySelector("#syn-word");
 
           if (data[0].phonetics && data[0].phonetics.length > 0 && data[0].phonetics[0].audio) {
             wordElement.innerHTML = `${data[0].word} <img id="prononciation" src="src/media/sound-logo.svg" alt="Logo de son" width="20" height="20">`;
-            pronunciationIcon = document.querySelector("#prononciation");
-            if (pronunciationIcon) {
-              pronunciationIcon.addEventListener("click", playAudio);
-            }
+            pronunciationIcon.addEventListener("click", playAudio);
           } else {
             wordElement.textContent = data[0].word;
-            if (pronunciationIcon) {
-              pronunciationIcon.style.display = "none";
-              pronunciationIcon.removeEventListener("click", playAudio);
-            }
+            pronunciationIcon.style.display = "none";
+            pronunciationIcon.removeEventListener("click", playAudio);
           }
 
-          let definitionElement = document.querySelector("#definition");
-
           if (data[0].meanings.length > 0) {
-            let definition = data[0].meanings[0].definitions[0].definition;
+            const definition = data[0].meanings[0].definitions[0].definition;
             definitionElement.textContent = definition;
           } else {
             definitionElement.textContent = "Aucune définition trouvée.";
           }
 
-          let audioUrl = data[0].phonetics && data[0].phonetics.length > 0 ? data[0].phonetics[0].audio : "";
-          let audioElement = document.querySelector("#audio");
+          const audioUrl = data[0].phonetics && data[0].phonetics.length > 0 ? data[0].phonetics[0].audio : "";
           audioElement.src = audioUrl;
 
           fetch(synApiUrl)
             .then(response => response.json())
             .then(synData => {
               if (synData.length > 0) {
-                let synonymsElement = document.querySelector("#syn-word");
-                let synonyms = synData.map(syn => syn.word);
+                const synonyms = synData.map(syn => syn.word);
                 synonymsElement.textContent = synonyms.join(", ");
               } else {
-                let synonymsElement = document.querySelector("#syn-word");
                 synonymsElement.textContent = "No synonyms found.";
               }
             })
             .catch(error => console.log("An error occurred while fetching synonyms: ", error));
-          } else {
-            errorMessage.style.display = "none";
-            noResultMessage.style.display = "block";
-          }
-        })
+        } else {
+          errorMessage.style.display = "none";
+          noResultMessage.style.display = "block";
+        }
+      })
       .catch(error => console.log("An error occurred: ", error));
   } else {
     console.log("Please enter a valid word");
@@ -87,29 +89,18 @@ function searchWord() {
 }
 
 function playAudio() {
-  let audioElement = document.querySelector("#audio");
+  const audioElement = document.querySelector("#audio");
   audioElement.play();
 }
 
-let fontOptions = document.querySelectorAll(".font-option");
-
-fontOptions.forEach(option => {
-  option.addEventListener("click", changeFont);
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  let siteBody = document.querySelector("body");
-  siteBody.classList.add("serif");
-});
-
 function changeFont(event) {
-  let fontClass = event.target.classList[1];
-  let siteBody = document.querySelector("body");
+  const fontClass = event.target.classList[1];
+  const siteBody = document.querySelector("body");
   
   siteBody.classList.remove("serif", "sans-serif", "monospace");
-
   siteBody.classList.add(fontClass);
 
+  const fontOptions = document.querySelectorAll(".font-option");
   fontOptions.forEach(option => {
     option.classList.remove("selected");
   });
@@ -117,9 +108,7 @@ function changeFont(event) {
   event.target.classList.add("selected");
 }
 
-const modeToggle = document.querySelector(".color-selector");
-const siteBody = document.querySelector("body");
-
 function toggleDarkMode() {
+  const siteBody = document.querySelector("body");
   siteBody.classList.toggle("dark-mode");
 }
