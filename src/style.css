@@ -1,6 +1,6 @@
 :root {
     --main-white: #131313;
-    --main-black: #e1e1e1;
+    --main-black: #ffffff;
     --select-white: #db0000;
     --select-black: #E59803;
 }
@@ -82,14 +82,23 @@ h1 {
 }
 
 #content {
-    display: flex;
+    display: grid;
     justify-content: center;
     margin-bottom: 1.75rem;
+}
+
+.error {
+    color: var(--select-white); 
+    display: none;
+    justify-content: center;
+    margin-left: 15.125rem;
+    margin: 0;
 }
 
 #search {
     display: flex;
     margin-right: 4rem;
+    margin-left: 15.125rem;
 }
 
 #text-input {
@@ -102,7 +111,6 @@ h1 {
     font-size: 1.25rem;
     letter-spacing: .125rem;
     padding: .6875rem 1.375rem;
-    margin-left: 15.125rem;
     margin-top: 4.9375rem;
 }
 
@@ -193,6 +201,7 @@ body.dark-mode .selector:hover {
 body.dark-mode #text-input {
     background: #444444;
     border: 1px solid var(--main-black);
+    color: var(--main-black);
 }
 
 body.dark-mode #text-input::placeholder {
@@ -213,6 +222,10 @@ body.dark-mode #prononciation {
 
 body.dark-mode #headerimg {
     filter: invert(100%) sepia(0%) saturate(7361%) hue-rotate(152deg) brightness(137%) contrast(76%);
+}
+
+body.dark-mode .error {
+    color: var(--select-black);
 }
 
 @media screen and (max-width: 48rem) {
@@ -243,9 +256,20 @@ body.dark-mode #headerimg {
         height: 2.5rem;
     }
 
+    #search {
+        margin-left: 120px;
+    }
+
+    .error {
+        color: var(--select-white); 
+        display: none;
+        justify-content: center;
+        margin-left: 120px;
+        font-size: .75rem;
+    }
+
     #text-input {
         width: 10.5rem;
-        margin-left: 120px;
         font-size: .75rem;
     }
 
@@ -255,7 +279,7 @@ body.dark-mode #headerimg {
 
     #def {
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 1fr;
+        grid-template-rows: 50px 1 1;
         margin-left: 67px;
     }
 
@@ -289,4 +313,21 @@ body.dark-mode #headerimg {
         font-size: .875rem;
     }
 
+}
+
+@media screen and (max-width: 375px) {
+    #but-input {
+        width: 30px;
+        background-size: 70%;
+    }
+
+    body.dark-mode #but-input {
+        background-size: 70%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #text-input {
+        width: 110px;
+    }
 }
