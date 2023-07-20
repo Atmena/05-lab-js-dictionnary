@@ -44,14 +44,19 @@ function searchWord() {
           const definitionElement = document.querySelector("#definition");
           const audioElement = document.querySelector("#audio");
           const synonymsElement = document.querySelector("#syn-word");
+          const phoneticsElement = document.querySelector("#phonetics");
 
           if (data[0].phonetics && data[0].phonetics.length > 0 && data[0].phonetics[0].audio) {
             wordElement.innerHTML = `${data[0].word} <img id="prononciation" src="src/media/sound-logo.svg" alt="Logo de son" width="20" height="20">`;
             pronunciationIcon.addEventListener("click", playAudio);
+
+            const phoneticsText = data[0].phonetics[0].text;
+            phoneticsElement.textContent = phoneticsText;
           } else {
             wordElement.textContent = data[0].word;
             pronunciationIcon.style.display = "none";
             pronunciationIcon.removeEventListener("click", playAudio);
+            phoneticsElement.textContent = "";
           }
 
           if (data[0].meanings.length > 0) {
