@@ -10,6 +10,7 @@ body {
     color: var(--main-white);
     background-color: var(--main-white);
     background-image: url(media/background-white.png);
+    transition: background-image 1s ease, background-color 1s ease;
 }
 
 #header {
@@ -92,7 +93,7 @@ h1 {
     color: var(--select-white); 
     display: none;
     justify-content: center;
-    margin-left: 15.125rem;
+    padding-left: 15.125rem;
     margin: 0;
 }
 
@@ -180,6 +181,7 @@ h3 {
 body.dark-mode {
     color: var(--main-black);
     background-image: url(media/background-black.png);
+    transition: background-image 1s ease, background-color 1s ease;
 }
 
 body.dark-mode .font-option.selected {
@@ -271,7 +273,7 @@ body.dark-mode h3 {
         color: var(--select-white); 
         display: none;
         justify-content: center;
-        margin-left: 120px;
+        padding-left: 120px;
         font-size: .75rem;
     }
 

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let searchInput = document.querySelector("#text-input");
   let errorMessage = document.querySelector("#error-message");
   let noResultMessage = document.querySelector("#no-result-message");
+  let colorSelectorButton = document.querySelector(".color-selector");
 
   searchButton.addEventListener("click", searchWord);
   searchInput.addEventListener("keydown", function(event) {
@@ -10,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
       searchWord();
     }
   });
+
+  colorSelectorButton.addEventListener("click", toggleDarkMode);
 });
 
 function searchWord() {
@@ -116,8 +119,6 @@ function changeFont(event) {
 
 const modeToggle = document.querySelector(".color-selector");
 const siteBody = document.querySelector("body");
-
-modeToggle.addEventListener("click", toggleDarkMode);
 
 function toggleDarkMode() {
   siteBody.classList.toggle("dark-mode");
