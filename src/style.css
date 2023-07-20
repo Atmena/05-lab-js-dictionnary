@@ -156,6 +156,7 @@ h2 {
     font-size: 1.375rem;
     margin-top: 0;
     margin-bottom: 3.125rem;
+    color: var(--select-white);
 }
 
 h3 {
@@ -169,6 +170,10 @@ h3 {
 #prononciation {
     cursor: pointer;
     padding-left: .3125rem;
+}
+
+#prononciation:hover {
+    filter: invert(15%) sepia(92%) saturate(2803%) hue-rotate(2deg) brightness(108%) contrast(146%);
 }
 
 #definition, #syn-word {
@@ -246,6 +251,14 @@ body.dark-mode .error {
 
 body.dark-mode h3 {
     color: var(--select-black);
+}
+
+body.dark-mode #phonetics {
+    color: var(--select-black);
+}
+
+body.dark-mode #prononciation:hover {
+    filter: invert(66%) sepia(18%) saturate(7037%) hue-rotate(7deg) brightness(98%) contrast(98%);
 }
 
 @media screen and (max-width: 768px) {
