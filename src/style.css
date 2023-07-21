@@ -145,7 +145,6 @@ h1 {
   
 #word-element {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -159,8 +158,7 @@ h1 {
   #phonetics {
     font-size: 1.375rem;
     color: var(--main-white);
-    margin-top: 0;
-    margin-left: 0;
+    margin-left: .625rem;
   }  
 
 h3 {
@@ -326,7 +324,6 @@ body.dark-mode #prononciation:hover {
 
     #phonetics {
         font-size: .875rem;
-        margin-bottom: 1.875rem;
     }
 
     h3 {

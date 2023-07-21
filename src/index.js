@@ -61,7 +61,7 @@ function searchWord() {
                 const synonyms = synData.map(syn => syn.word);
                 synonymsElement.textContent = synonyms.join(", ");
               } else {
-                synonymsElement.textContent = "Pas de synonymes trouvés.";
+                synonymsElement.textContent = "No synonyme found.";
               }
             })
             .catch(error => console.log("Une erreur s'est produite lors de la récupération des synonymes: ", error));
