@@ -147,19 +147,19 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  #word {
+#word {
     font-weight: 700;
     color: var(--select-white);
     text-transform: uppercase;
-  }
+}
   
-  #phonetics {
+#phonetics {
     font-size: 1.375rem;
     color: var(--main-white);
     margin-left: .625rem;
-  }  
+}  
 
 h3 {
     font-weight: 400;
