@@ -40,24 +40,12 @@ function searchWord() {
       .then(data => {
         if (data.length > 0) {
           const wordElement = document.querySelector("#word");
-          const pronunciationIcon = document.querySelector("#prononciation");
           const definitionElement = document.querySelector("#definition");
           const audioElement = document.querySelector("#audio");
           const synonymsElement = document.querySelector("#syn-word");
           const phoneticsElement = document.querySelector("#phonetics");
 
-          if (data[0].phonetics && data[0].phonetics.length > 0 && data[0].phonetics[0].audio) {
-            wordElement.innerHTML = `${data[0].word} <img id="prononciation" src="src/media/sound-logo.svg" alt="Logo de son" width="20" height="20">`;
-            pronunciationIcon.addEventListener("click", playAudio);
-
-            const phoneticsText = data[0].phonetics[0].text;
-            phoneticsElement.textContent = phoneticsText;
-          } else {
-            wordElement.textContent = data[0].word;
-            pronunciationIcon.style.display = "none";
-            pronunciationIcon.removeEventListener("click", playAudio);
-            phoneticsElement.textContent = "";
-          }
+          wordElement.innerHTML = `${data[0].word}`;
 
           if (data[0].meanings.length > 0) {
             const definition = data[0].meanings[0].definitions[0].definition;
@@ -66,9 +54,6 @@ function searchWord() {
             definitionElement.textContent = "Aucune définition trouvée.";
           }
 
-          const audioUrl = data[0].phonetics && data[0].phonetics.length > 0 ? data[0].phonetics[0].audio : "";
-          audioElement.src = audioUrl;
-
           fetch(synApiUrl)
             .then(response => response.json())
             .then(synData => {
@@ -76,26 +61,46 @@ function searchWord() {
                 const synonyms = synData.map(syn => syn.word);
                 synonymsElement.textContent = synonyms.join(", ");
               } else {
-                synonymsElement.textContent = "No synonyms found.";
+                synonymsElement.textContent = "Pas de synonymes trouvés.";
               }
             })
-            .catch(error => console.log("An error occurred while fetching synonyms: ", error));
+            .catch(error => console.log("Une erreur s'est produite lors de la récupération des synonymes: ", error));
+
+          if (data[0].phonetics && data[0].phonetics.length > 0 && data[0].phonetics[0].audio) {
+            const pronunciationIcon = document.createElement("img");
+            pronunciationIcon.id = "prononciation";
+            pronunciationIcon.src = "src/media/sound-logo.svg";
+            pronunciationIcon.alt = "Logo de son";
+            pronunciationIcon.width = 20;
+            pronunciationIcon.height = 20;
+            pronunciationIcon.addEventListener("click", playAudio.bind(null, data[0].phonetics[0].audio));
+            wordElement.appendChild(pronunciationIcon);
+
+            const phoneticsText = data[0].phonetics[0].text;
+            phoneticsElement.textContent = phoneticsText;
+          } else {
+            phoneticsElement.textContent = "";
+          }
         } else {
           errorMessage.style.display = "none";
           noResultMessage.style.display = "block";
         }
       })
-      .catch(error => console.log("An error occurred: ", error));
+      .catch(error => console.log("Une erreur s'est produite: ", error));
   } else {
-    console.log("Please enter a valid word");
+    console.log("Veuillez entrer un mot valide");
     errorMessage.style.display = "block";
     noResultMessage.style.display = "none";
   }
 }
 
-function playAudio() {
+function playAudio(audioUrl) {
   const audioElement = document.querySelector("#audio");
-  audioElement.play();
+  audioElement.src = audioUrl;
+  audioElement.play()
+    .catch(error => {
+      console.log("Erreur lors de la lecture de l'audio : ", error);
+    });
 }
 
 function changeFont(event) {
