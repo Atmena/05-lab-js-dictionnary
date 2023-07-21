@@ -251,12 +251,16 @@ body.dark-mode .error {
     color: var(--select-black);
 }
 
+body.dark-mode #word {
+    color: var(--select-black);
+}
+
 body.dark-mode h3 {
     color: var(--select-black);
 }
 
 body.dark-mode #phonetics {
-    color: var(--select-black);
+    color: var(--main-black);
 }
 
 body.dark-mode #prononciation:hover {
