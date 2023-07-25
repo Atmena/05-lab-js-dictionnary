@@ -315,6 +315,14 @@ body.dark-mode #prononciation:hover {
         margin-right: 0;
     }
 
+    #word-element {
+        flex-direction: column;
+    }
+
+    #phonetics {
+        margin: 0;
+    }
+
     #def {
         grid-template-columns: 1fr;
         grid-template-rows: 3.125rem 1 1;
@@ -336,7 +344,9 @@ body.dark-mode #prononciation:hover {
 
     #prononciation {
         cursor: pointer;
-        padding-left: .3125rem;
+        padding-left: .9375rem;
+        height: .875rem;
+        width: .875rem;
     }
 
     #description, #syn {

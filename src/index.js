@@ -66,23 +66,22 @@ function searchWord() {
             })
             .catch(error => console.log("Une erreur s'est produite lors de la récupération des synonymes: ", error));
 
-          if (data[0].phonetics[0].audio) {
-            const pronunciationIcon = document.createElement("img");
-            pronunciationIcon.id = "prononciation";
-            pronunciationIcon.src = "src/media/sound-logo.svg";
-            pronunciationIcon.alt = "Logo de son";
-            pronunciationIcon.width = 20;
-            pronunciationIcon.height = 20;
-            pronunciationIcon.addEventListener("click", playAudio.bind(null, data[0].phonetics[0].audio));
-            wordElement.appendChild(pronunciationIcon);
-          } else {
-            phoneticsElement.textContent = "";
-          }
-
           if (data[0].phonetics && data[0].phonetics.length > 0) {
             const phoneticsText = data[0].phonetics[0].text;
-
             phoneticsElement.textContent = phoneticsText;
+
+            if (data[0].phonetics[0].audio) {
+              const pronunciationIcon = document.createElement("img");
+              pronunciationIcon.id = "prononciation";
+              pronunciationIcon.src = "src/media/sound-logo.svg";
+              pronunciationIcon.alt = "Logo de son";
+              pronunciationIcon.width = 22;
+              pronunciationIcon.height = 22;
+              pronunciationIcon.addEventListener("click", playAudio.bind(null, data[0].phonetics[0].audio));
+              phoneticsElement.appendChild(pronunciationIcon);
+            }
+          } else {
+            phoneticsElement.textContent = "";
           }
 
         } else {
