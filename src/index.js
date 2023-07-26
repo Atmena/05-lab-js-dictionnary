@@ -41,7 +41,6 @@ function searchWord() {
         if (data.length > 0) {
           const wordElement = document.querySelector("#word");
           const definitionElement = document.querySelector("#definition");
-          const audioElement = document.querySelector("#audio");
           const synonymsElement = document.querySelector("#syn-word");
           const phoneticsElement = document.querySelector("#phonetics");
 
